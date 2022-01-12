@@ -2,6 +2,8 @@
     <div class="single-card">
         <!-- Se l'elemento appartiene a movie, mostra la card con i film -->
         <ul v-if="movieDetails">
+            <!-- Se l'immagine è presente nell'elemento inseriscila nella card -->
+            <li v-if="movieDetails.backdrop_path"><img :src="`${baseOfHttps}${dimensionImg}${movieDetails.backdrop_path}`" :alt="movieDetails.title"></li>
             <li>Titolo: {{movieDetails.title}}</li>
             <li>Titolo Originale: {{movieDetails.original_title}}</li>
             <li>Lingua: 
@@ -12,11 +14,20 @@
                     {{ movieDetails.original_language }}
                 </span>
             </li>
-            <li>Voto: {{movieDetails.vote_average}}</li>
+            <li>Voto: 
+                <span class="star">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </span> {{Math.round(movieDetails.vote_average / 2)}}</li>
         </ul>
 
         <!-- Altrimenti mostra la carta con le serie tv-->
         <ul v-else>
+            <!-- Se l'immagine è presente nell'elemento inseriscila nella card -->
+            <li v-if="serieDetails.backdrop_path"><img :src="`${baseOfHttps}${dimensionImg}${serieDetails.backdrop_path}`" :alt="serieDetails.title"></li>
             <li>Titolo: {{serieDetails.name}}</li>
             <li>Titolo Originale: {{serieDetails.original_name}}</li>
             <li>Lingua: 
@@ -27,7 +38,14 @@
                     {{ serieDetails.original_language }}
                 </span>
             </li>
-            <li>Voto: {{serieDetails.vote_average}}</li>
+            <li>Voto: 
+                <span class="star">
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </span> {{Math.round(serieDetails.vote_average / 2)}}</li>
         </ul>
     </div>
 </template>
@@ -37,12 +55,16 @@ export default {
     name: "SingleCard",
     data: function() {
         return {
-            
+            baseOfHttps: 'https://image.tmdb.org/t/p/',
+            dimensionImg: '/w342',
         };
     },
     props:{
         movieDetails: Object,
         serieDetails: Object
+    },
+    methods: {
+        
     }
 }
 </script>
