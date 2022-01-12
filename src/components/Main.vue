@@ -1,24 +1,28 @@
 <template>
     <main>
-        
+        <h2>FILM</h2>
         <div class="container">
-            <SingleMovie v-for="movie in movies" :key="movie.id" :movieDetails="movie"/>
+            <SingleCard v-for="movie in movies" :key="movie.id" :movieDetails="movie" />
         </div>
-        
+        <h2>SERIE TV</h2>
+        <div class="container">
+            <SingleCard v-for="serie in series" :key="serie.id" :serieDetails="serie" />
+        </div>
     </main>
 </template>
 
 <script>
 
-import SingleMovie from "./SingleMovie.vue";
+import SingleCard from "./SingleCard.vue";
 
 export default {
     name: "Main",
     components: {
-        SingleMovie
+        SingleCard
     },
     props: {
-        movies: Array
+        movies: Array,
+        series: Array
     },
     data: function() {
         return {
@@ -39,8 +43,13 @@ main{
     // TEST
     height: calc(100% - 80px);
     background-color:coral;
-    // flex-wrap: wrap;
     overflow-y: auto;
+
+    h2{
+
+        // TEST
+        padding: 30px 40px;
+    }
 
     .container{
 
@@ -49,6 +58,8 @@ main{
         flex-wrap: wrap;
         width: 70%;
         margin: 20px auto;
+
+        
     }
 }
 
