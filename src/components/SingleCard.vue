@@ -15,12 +15,9 @@
                 </span>
             </li>
             <li>Voto: 
-                <span class="star">
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
+                <span v-for="index in 5" :key="index" class="star">
+                    <i v-if="index <= Math.round(movieDetails.vote_average / 2)" class="fas fa-star vote"></i>
+                    <i v-else class="fas fa-star"></i>
                 </span> {{Math.round(movieDetails.vote_average / 2)}}</li>
         </ul>
 
@@ -39,12 +36,9 @@
                 </span>
             </li>
             <li>Voto: 
-                <span class="star">
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
+                <span  v-for="index in 5" :key="index" class="star">
+                    <i v-if="index <= Math.round(serieDetails.vote_average / 2)" class="fas fa-star vote"></i>
+                    <i v-else class="fas fa-star"></i>
                 </span> {{Math.round(serieDetails.vote_average / 2)}}</li>
         </ul>
     </div>
