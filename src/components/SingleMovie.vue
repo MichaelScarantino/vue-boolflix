@@ -2,10 +2,10 @@
 
     <div class="single-movie">
         <ul>
-            <li>Titolo: {{details.title}}</li>
-            <li>Titolo Originale: {{details.original_title}}</li>
-            <li>Lingua: {{details.original_language}}</li>
-            <li>Voto: {{details.vote_average}}</li>
+            <li>Titolo: {{movieDetails.title}}</li>
+            <li>Titolo Originale: {{movieDetails.original_title}}</li>
+            <li>Lingua: {{movieDetails.original_language}}</li>
+            <li>Voto: {{movieDetails.vote_average}}</li>
         </ul>
     </div>
     
@@ -23,7 +23,7 @@ export default {
         };
     },
     props:{
-        details: Object
+        movieDetails: Object
     }
 }
 </script>

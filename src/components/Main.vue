@@ -1,17 +1,15 @@
 <template>
     <main>
-        <template v-if="movie !== ''" class="prova">
-            {{callMovieApi(movie)}}
-        </template>
+        
         <div class="container">
-            <SingleMovie v-for="(movieElement, index) in movieArraySearched" :key="index" :details="movieElement"/>
+            <SingleMovie v-for="movie in movies" :key="movie.id" :movieDetails="movie"/>
         </div>
         
     </main>
 </template>
 
 <script>
-import axios from "axios";
+
 import SingleMovie from "./SingleMovie.vue";
 
 export default {
@@ -20,27 +18,15 @@ export default {
         SingleMovie
     },
     props: {
-        movie: String
+        movies: Array
     },
     data: function() {
         return {
-            movieArraySearched: [],
+           
         };
     },
-
     methods: {
-        callMovieApi: function(movie) {
-            axios.get('https://api.themoviedb.org/3/search/movie',
-            {
-                params: {
-                    api_key: '8a7a082738003c8eafb76274fe038379',
-                    query: movie,
-                }
-            })
-            .then((response) => {
-                this.movieArraySearched = response.data.results;
-            });
-        },
+        
     },
 }
 </script>
