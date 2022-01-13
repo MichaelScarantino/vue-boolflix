@@ -68,21 +68,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-
 .single-card{
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     border: 2px solid white;
     margin: 10px;
     flex-shrink: 0;
-    
-
+    cursor: pointer;
     &-front {
         width: 100%;
         height: 100%;
         display: block;
-        
         .single-card-img{
             width: 100%;
             height: 100%;
@@ -97,25 +93,23 @@ export default {
             height: 513px;
             padding: 0 10px;
             position: relative;
+            background-image: url('../assets/img/no-image.png');
+            background-repeat: no-repeat;
+            background-size:inherit;
+            background-position: center;
             h2{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
                 text-align: center;
-                display: inline-block;
-                font-size: 40px;
+                font-size: 30px;
+                padding-top: 20px;
             }
         }
     }
-    
     &-back{
         display: none;
         width: 342px;
         height: 513px;
         padding: 50px 20px;
         overflow-y: auto;
-        
         h3{
             display: inline-block;
             margin-right: 5px;
@@ -131,6 +125,10 @@ export default {
         }
     }
 }
-
-
+.single-card:hover .single-card-front{
+        display: none;
+    }
+.single-card:hover .single-card-back{
+    display: block;
+}
 </style>
