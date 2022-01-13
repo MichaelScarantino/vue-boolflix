@@ -27,7 +27,7 @@ header{
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: cyan;
+    background-color: black;
     justify-content: center;
 
     .header-search{

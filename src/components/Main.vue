@@ -42,24 +42,19 @@ main{
     
     // TEST
     height: calc(100% - 80px);
-    background-color:coral;
+    background-color:rgb(98, 98, 98);
     overflow-y: auto;
 
     h2{
-
+        font-size: 40px;
         // TEST
-        padding: 30px 40px;
+        padding: 30px 20px;
     }
 
     .container{
-
-        // TEST
         display: flex;
-        flex-wrap: wrap;
-        width: 70%;
-        margin: 20px auto;
-
-        
+        overflow-x: auto;
+        margin: 0 10px;
     }
 }
 
