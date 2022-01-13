@@ -69,6 +69,7 @@ export default {
 
 <style scoped lang="scss">
 .single-card{
+    height: 513px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     border: 2px solid white;
@@ -90,7 +91,7 @@ export default {
         }
         .single-card-title-front{
             width: 342px;
-            height: 513px;
+            height: 100%;
             padding: 0 10px;
             position: relative;
             background-image: url('../assets/img/no-image.png');
@@ -107,7 +108,7 @@ export default {
     &-back{
         display: none;
         width: 342px;
-        height: 513px;
+        height: 100%;
         padding: 50px 20px;
         overflow-y: auto;
         h3{
