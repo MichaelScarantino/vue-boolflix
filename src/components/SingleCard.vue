@@ -1,45 +1,30 @@
 <template>
     <div class="single-card">
-        <!-- Se l'elemento appartiene a movie, mostra la card con i film -->
-        <ul v-if="movieDetails">
+        <ul>
             <!-- Se l'immagine è presente nell'elemento inseriscila nella card -->
-            <li v-if="movieDetails.backdrop_path"><img :src="`${baseOfHttps}${dimensionImg}${movieDetails.backdrop_path}`" :alt="movieDetails.title"></li>
-            <li>Titolo: {{movieDetails.title}}</li>
-            <li>Titolo Originale: {{movieDetails.original_title}}</li>
+            <li v-if="details.backdrop_path"><img :src="`${baseOfHttps}${dimensionImg}${details.backdrop_path}`" :alt="details.title ? details.title : details.name"></li>
+            <!-- Se si stampa a schermo un film .title, altrimenti .name -->
+            <li>Titolo: {{details.title ? details.title : details.name}}</li>
+            <!-- Se si stampa a schermo un film .original_title, altrimenti .original_name -->
+            <li>Titolo Originale: {{details.original_title ? details.original_title : details.original_name}}</li>
+            <!-- Se la lingua è presente nell'array flagsArray mostra l' img della bandiera -->
             <li>Lingua: 
-                <span v-if="movieDetails.original_language === 'it' || movieDetails.original_language === 'fr' || movieDetails.original_language === 'en'" class="flag">
-                    <img :src="require(`../assets/img/${movieDetails.original_language}.jpg`)" :alt="movieDetails.original_language">
+                <span v-if="flagsArray.includes(details.original_language)" class="flag">
+                    <img :src="require(`../assets/img/${details.original_language}.jpg`)" :alt="details.original_language">
                 </span>
+                <!-- Altrimenti mostra .original_language -->
                 <span v-else>
-                    {{ movieDetails.original_language }}
+                    {{ details.original_language }}
                 </span>
             </li>
             <li>Voto: 
                 <span v-for="index in 5" :key="index" class="star">
-                    <i v-if="index <= Math.round(movieDetails.vote_average / 2)" class="fas fa-star vote"></i>
+                    <!-- Se il voto è inferiore al voto ottenuto aggiungi alla stella la classe vote -->
+                    <i v-if="index <= Math.round(details.vote_average / 2)" class="fas fa-star vote"></i>
+                    <!-- altrimenti aggiungi la stella di default -->
                     <i v-else class="fas fa-star"></i>
-                </span> {{Math.round(movieDetails.vote_average / 2)}}</li>
-        </ul>
-
-        <!-- Altrimenti mostra la carta con le serie tv-->
-        <ul v-else>
-            <!-- Se l'immagine è presente nell'elemento inseriscila nella card -->
-            <li v-if="serieDetails.backdrop_path"><img :src="`${baseOfHttps}${dimensionImg}${serieDetails.backdrop_path}`" :alt="serieDetails.title"></li>
-            <li>Titolo: {{serieDetails.name}}</li>
-            <li>Titolo Originale: {{serieDetails.original_name}}</li>
-            <li>Lingua: 
-                <span v-if="serieDetails.original_language === 'it' || serieDetails.original_language === 'fr' || serieDetails.original_language === 'en'" class="flag">
-                    <img :src="require(`../assets/img/${serieDetails.original_language}.jpg`)" :alt="serieDetails.original_language">
-                </span>
-                <span v-else>
-                    {{ serieDetails.original_language }}
                 </span>
             </li>
-            <li>Voto: 
-                <span  v-for="index in 5" :key="index" class="star">
-                    <i v-if="index <= Math.round(serieDetails.vote_average / 2)" class="fas fa-star vote"></i>
-                    <i v-else class="fas fa-star"></i>
-                </span> {{Math.round(serieDetails.vote_average / 2)}}</li>
         </ul>
     </div>
 </template>
@@ -51,11 +36,11 @@ export default {
         return {
             baseOfHttps: 'https://image.tmdb.org/t/p/',
             dimensionImg: '/w342',
+            flagsArray: ['it', 'en', 'fr']
         };
     },
     props:{
-        movieDetails: Object,
-        serieDetails: Object
+        details: Object,
     },
     methods: {
         

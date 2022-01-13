@@ -2,11 +2,11 @@
     <main>
         <h2>FILM</h2>
         <div class="container">
-            <SingleCard v-for="movie in movies" :key="movie.id" :movieDetails="movie" />
+            <SingleCard v-for="movie in movies" :key="movie.id" :details="movie" />
         </div>
         <h2>SERIE TV</h2>
         <div class="container">
-            <SingleCard v-for="serie in series" :key="serie.id" :serieDetails="serie" />
+            <SingleCard v-for="serie in series" :key="serie.id" :details="serie" />
         </div>
     </main>
 </template>
